@@ -26,8 +26,8 @@ function Profile() {
                             <th>Email</th>
                         </tr>
                         <tr>
-                            <th>{profileData.firstname}</th>
-                            <th>{profileData.lastname}</th>
+                            <th>{profileData.email}</th>
+                            <th>{profileData.email}</th>
                             <th>{profileData.email}</th>
                         </tr>
                 </tbody>

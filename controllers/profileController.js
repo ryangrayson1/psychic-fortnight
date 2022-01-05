@@ -1,9 +1,11 @@
 const profileRouter = require('express').Router();
 const Profile = require('../models/profile');
 
+//need somthing to get the creds of the user who's logged in
+
 profileRouter.get('/', async (req, res) => {
-      const profileInfo = await Profile.find({ email: });
-      return res.json(profile.toJSON());
+      const profileInfo = await Profile.find({ email: "ryangrayson20@gmail.com"}); ///update this to be specific to the user
+      return res.json(profileInfo);
   });
 
 profileRouter.post('/', (req, res) => {
