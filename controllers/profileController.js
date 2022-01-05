@@ -1,11 +1,10 @@
 const profileRouter = require('express').Router();
 const Profile = require('../models/profile');
 
-// phonesRouter.get('/', async (req, res) => {
-//     const auth = req.currentUser;
-//       const profileInfo = await Profile.find();
-//       return res.json(phones.map((phone) => phone.toJSON()));
-//   });
+profileRouter.get('/', async (req, res) => {
+      const profileInfo = await Profile.find({ email: });
+      return res.json(profile.toJSON());
+  });
 
 profileRouter.post('/', (req, res) => {
     var userData = {
