@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.particles {
+  background-color: rgb(27, 36, 99);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+ }
+
+ .words {
+   color: rgb(255, 255, 255);
+ }
+
+ .signin {
+   width: 30%;
+   margin-left: 35%;
+   margin-right: 35%;
+   align-items: center;
+ }
+
+ .clean {
+   text-decoration: none;
+   color: white;
+ }
+
+ .dataexample {
+  width: 60%;
+  border: 5px solid green;
+  margin-left: 20%;
+  margin-right: 20%;
+  align-items: center;
+ }
+
+ .profiletable {
+  width: 40%;
+  border: 5px solid aliceblue;
+  margin-right: 30%;
+  align-items: center;
+ }
