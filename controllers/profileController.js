@@ -4,7 +4,7 @@ const Profile = require('../models/profile');
 //need somthing to get the creds of the user who's logged in
 
 profileRouter.get('/', async (req, res) => {
-      const profileInfo = await Profile.find({ email: "ryangrayson20@gmail.com"}); ///update this to be specific to the user
+      const profileInfo = await Profile.find({}); //finding all profiles
       return res.json(profileInfo);
   });
 

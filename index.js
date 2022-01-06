@@ -6,7 +6,7 @@ const cors = require('cors');
 const dotenv = require('dotenv').config();
 const path = require('path');
 const profileRouter = require('./controllers/profileController.js')
-const decodeIDToken = require('./authenticateToken.js');
+// const decodeIDToken = require('./authenticateToken.js');
 const app = express();
 
 mongoose.connect(
@@ -20,13 +20,18 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-app.use(decodeIDToken);
+//app.use(decodeIDToken);
 app.use(express.static(path.resolve(__dirname, './frontend/build')));
-app.use('/api', profileRouter);
+app.use('/pro', profileRouter);
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'));
 });
+
+app.get("/profile", (req, res) => {
+  res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'));
+});
+
 
 const PORT = process.env.PORT || 3001;
 
