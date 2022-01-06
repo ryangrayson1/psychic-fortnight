@@ -1,8 +1,6 @@
 import axios from 'axios';
 import fire from '../fire.js';
 
-const url = 'http://localhost:3001/pro';
-
 export const createNewProfile = async (fname, lname, email, pword) => {
     try {
         const user = await fire.auth().createUserWithEmailAndPassword(email, pword);
@@ -14,7 +12,7 @@ export const createNewProfile = async (fname, lname, email, pword) => {
             email,
           };
           try {
-            const res = await axios.post(url, payload);
+            const res = await axios.post('/pro', payload);
             return res.data;
         } catch (e) {
             console.error(e);
@@ -27,7 +25,7 @@ export const createNewProfile = async (fname, lname, email, pword) => {
 
 export const getProfileData = async () => {
     try {
-        const res = await axios.get(url);
+        const res = await axios.get('/pro');
         return res.data;
       } catch (e) {
         console.error(e);
