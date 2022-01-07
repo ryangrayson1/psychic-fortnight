@@ -3,23 +3,19 @@ import { getProfileData } from '../services/profileServices.js';
 import fire from '../fire.js';
 
 function Profile() {
-    //getting data from backend... (profile data as JSON)
     const [profileData, setProfileData] = useState(null);
-     
-    const getUser = (data) => {
-        return data.find(checkEmail);
-    };
-
-    function checkEmail(e){
-        return e.email === fire.auth().currentUser.email;
-    };
 
     //getting user-specific profile data...
     useEffect(() => {
+        function checkEmail(e){
+            return e.email === fire.auth().currentUser.email;
+        };
+
         const fetchData = async () => {
           const data = await getProfileData();
-          setProfileData(getUser(data));
-        }
+          setProfileData(data.find(checkEmail));
+        };
+
         fetchData();
       }, []);
 
