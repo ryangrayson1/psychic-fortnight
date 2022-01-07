@@ -54,13 +54,13 @@ function App() {
             <> 
               <button className="btn btn-success active" href="/">
                 <a className="clean" href="/">Home</a>
-              </button>
+              </button>&nbsp;
               <button className="btn btn-info active" href="/profile/">
                 <a className="clean" href="/profile/">Profile</a>
-              </button>
-              <button className="btn btn-dark active" href="/profile/">
+              </button>&nbsp;
+              <button className="btn btn-map active" href="/profile/">
                 <a className="clean" href="/map/">Map</a>
-              </button>
+              </button>&nbsp;
               <button onClick={signOut} className="btn btn-danger active">
                 <a className="clean" href="/">Sign out</a>
               </button>      
