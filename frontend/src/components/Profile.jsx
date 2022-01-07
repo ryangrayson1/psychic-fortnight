@@ -6,6 +6,15 @@ function Profile() {
     //getting data from backend... (profile data as JSON)
     const [profileData, setProfileData] = useState(null);
      
+    const getUser = (data) => {
+        return data.find(checkEmail);
+    };
+
+    function checkEmail(e){
+        return e.email === fire.auth().currentUser.email;
+    };
+
+    //getting user-specific profile data...
     useEffect(() => {
         const fetchData = async () => {
           const data = await getProfileData();
@@ -14,17 +23,8 @@ function Profile() {
         fetchData();
       }, []);
 
-    const getUser = (data) => {
-        return data.find(checkEmail);
-    };
-
-    function checkEmail(e){
-        return e.email === fire.auth().currentUser.email;
-    }
-
     return(
-        <div>
-            
+        <div>    
             {!profileData ? 
                 <h3 className="clean">Loading profile data...</h3> : 
                 <>
@@ -42,7 +42,7 @@ function Profile() {
                             <th>{profileData.lastName}</th>
                             <th>{profileData.email}</th>
                         </tr>
-                </tbody>
+                    </tbody>
                 </table>
                 </>
             }
