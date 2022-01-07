@@ -6,6 +6,7 @@ import Login from './components/Login.jsx';
 import Profile from './components/Profile.jsx';
 import Home from './components/Home.jsx';
 import NewUser from './components/NewUser.jsx';
+import Map from './components/Map.jsx';
 import Particles from 'react-tsparticles';
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -53,15 +54,20 @@ function App() {
             <> 
               <button className="btn btn-success active" href="/">
                 <a className="clean" href="/">Home</a>
-              </button>
+              </button>&nbsp;
               <button className="btn btn-info active" href="/profile/">
                 <a className="clean" href="/profile/">Profile</a>
-              </button>
+              </button>&nbsp;
+              <button className="btn btn-map active" href="/profile/">
+                <a className="clean" href="/map/">Map</a>
+              </button>&nbsp;
               <button onClick={signOut} className="btn btn-danger active">
                 <a className="clean" href="/">Sign out</a>
               </button>      
               <Routes>
                 <Route path="/profile/" element={<Profile/>}>
+                </Route>
+                <Route path="/map/" element={<Map/>}>
                 </Route>
                 <Route path="/" element={<Home/>}>
                 </Route>
