@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
 class Exercise {
-    constructor(name, sets, reps, time){
+    constructor(name, sets, reps){
         this.name = name;
         this.sets = sets;
         this.reps = reps;
-        this.time = time;
     }
 }
 
