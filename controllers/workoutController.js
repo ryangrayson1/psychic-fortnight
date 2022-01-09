@@ -1,5 +1,5 @@
 const workoutRouter = require('express').Router();
-const Workout = require('../models/workouts');
+const Workout = require('../models/workout');
 
 workoutRouter.get('/', async (req, res) => {
     const auth = req.currentUser;
@@ -26,3 +26,5 @@ workoutRouter.post('/', (req, res) => {
 // function testWorkoutRouterPost(){
 
 // }
+
+module.exports = workoutRouter;

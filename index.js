@@ -6,6 +6,7 @@ const cors = require('cors');
 const dotenv = require('dotenv').config();
 const path = require('path');
 const profileRouter = require('./controllers/profileController.js')
+const workoutRouter = require('./controllers/workoutController.js')
 const decodeIDToken = require('./authenticateToken.js');
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(decodeIDToken);
 app.use(express.static(path.resolve(__dirname, './frontend/build')));
 app.use('/pro', profileRouter);
+app.use('/wor', workoutRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'));
