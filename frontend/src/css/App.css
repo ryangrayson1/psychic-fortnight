@@ -46,3 +46,17 @@
  .btn-map{
    background-color: navy !important;
  }
+
+ .btn-workouts{
+   background-color: orange !important;
+ }
+
+ .btn-about{
+   background-color: rgb(114, 5, 114) !important;
+ }
+
+ .workout-card{
+   width: 50%;
+   margin-right: 25%;
+   margin-left: 25%;
+ }
