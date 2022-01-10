@@ -33,6 +33,7 @@ function App() {
 
   const signOut = () => {
     fire.auth().signOut()
+    setIsLoggedIn(false);
   }; 
 
   console.log('logged in?', isLoggedIn);
