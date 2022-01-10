@@ -50,7 +50,7 @@ function Workouts(){
                                 <div className="card-footer bg-transparent border-primary">
                                     <ul className="list-group list-group-flush bg-transparent border-success">
                                         {workout.exercises.map((exercise) => (
-                                            <li className="list-group-item bg-transparent border-success"><div className="words">{exercise.name}: {exercise.sets} sets of {exercise.reps} reps.</div></li>
+                                            <li className="list-group-item bg-transparent border-success"><div className="words">{exercise.exerciseName}: {exercise.sets} sets of {exercise.reps} reps.</div></li>
                                         ))}
                                     </ul>
                                 </div>

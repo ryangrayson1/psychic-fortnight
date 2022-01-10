@@ -1,0 +1,16 @@
+input[type=text] {
+    background-color: rgb(72, 221, 221);
+    color: black;
+  }
+
+  .add-exercise{
+    color: aliceblue;
+  }
+  
+  .wn {
+    width: 77%;
+  }
+  
+  .half{
+    width: 38.5%;
+  }

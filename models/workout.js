@@ -12,8 +12,8 @@ const workoutSchema = new mongoose.Schema({
     name: String,
     description: String,
     timeInMinutes: Number,
+    difficulty: Number,
     exercises: Array, //of exercises
-    difficulty: Number
 });
 
 module.exports = mongoose.model('Workout', workoutSchema);
