@@ -8,3 +8,19 @@ export const getWorkoutData = async () => {
         console.error(e);
       }
 }
+
+export const createNewWorkout = async (name, description, timeInMinutes, difficulty, exercises) => {
+    const payload = {
+        name,
+        description,
+        timeInMinutes,
+        difficulty,
+        exercises
+      };
+      try {
+        const res = await axios.post('/wor', payload);
+        return res.data;
+    } catch (e) {
+        console.error(e);
+      }
+}

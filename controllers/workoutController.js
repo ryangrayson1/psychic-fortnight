@@ -2,12 +2,13 @@ const workoutRouter = require('express').Router();
 const Workout = require('../models/workout');
 
 workoutRouter.get('/', async (req, res) => {
-    const auth = req.currentUser;
-      if (auth) {
+    try{
         const workoutInfo = await Workout.find({}); //finding all workouts
         return res.json(workoutInfo);
+    }
+      catch(err) {
+        console.log(err);
       }
-      return res.status(403).send('Not authorized');
 });
 
 workoutRouter.post('/', (req, res) => {
@@ -22,9 +23,5 @@ workoutRouter.post('/', (req, res) => {
     const savedWorkout = workout.save();
     return res.status(201).json(savedWorkout);
 });
-
-// function testWorkoutRouterPost(){
-
-// }
 
 module.exports = workoutRouter;
