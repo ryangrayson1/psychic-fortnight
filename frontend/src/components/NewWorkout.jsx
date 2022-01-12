@@ -8,6 +8,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import { v4 as uuidv4 } from 'uuid';
 import { createNewWorkout } from '../services/workoutServices.js';
+import fire from '../fire.js';
 import '../css/workout.css';
 
 function NewWorkout() {
@@ -27,13 +28,27 @@ function NewWorkout() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        if (name && description && timeInMinutes && difficulty && exercises){
-            alert("workout successfully created");
+        if (name.length > 75){
+            alert("Workout name must be less than 75 chars");
+        }
+        else if (!(difficulty > 0 || difficulty <= 10)){
+            alert("difficulty must be a number between 1 and 10, inclusive");
+        }
+        else if (exercises.length > 10){
+            alert("The max number of exercises is 10");
+        }
+        else if (timeInMinutes > 600){
+            alert("Workout time must be less than 10 hours");
+        }
+        else if (name && description && timeInMinutes && difficulty && exercises && 
+            typeof name === 'string') {
+            const creatorEmail = fire.auth().currentUser.email;
+            const creatorName = fire.auth().currentUser.name;
             navigate("/workouts");
-            return createNewWorkout(name, description, timeInMinutes, difficulty, exercises);
+            return createNewWorkout(name, description, timeInMinutes, difficulty, exercises, creatorEmail, creatorName);
         }
         else{
-            alert("workout not created");
+            alert("Workout not created. Please check that all fields have the correct format.");
         }
       };
     

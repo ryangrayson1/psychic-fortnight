@@ -39,7 +39,8 @@ function Workouts(){
                         <>
                             <div className="card workout-card bg-transparent border-primary words">
                                 <div className="card-header bg-transparent border-primary">
-                                    <b>{workout.name}</b>
+                                    <b><h3>{workout.name}</h3></b>
+                                    <h6>by {workout.creatorEmail}</h6>
                                 </div>
                                 <div className="card-body bg-transparent border-primary">
                                     <p>{workout.description}</p>

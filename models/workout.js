@@ -14,6 +14,7 @@ const workoutSchema = new mongoose.Schema({
     timeInMinutes: Number,
     difficulty: Number,
     exercises: Array, //of exercises
+    creatorEmail: String
 });
 
 module.exports = mongoose.model('Workout', workoutSchema);

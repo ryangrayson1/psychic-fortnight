@@ -20,11 +20,17 @@
     "http-errors": "^1.6.3",
     "jade": "^0.29.0",
     "mongoose": "^6.1.4",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "prompt-confirm": "^2.0.4"
   },
   "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "envify": "^4.1.0",
+    "terser": "^5.10.0",
+    "uglifyify": "^5.0.2"
+  }
 }
