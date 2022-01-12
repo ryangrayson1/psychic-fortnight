@@ -31,7 +31,7 @@ function NewWorkout() {
         if (name.length > 75){
             alert("Workout name must be less than 75 chars");
         }
-        else if (difficulty !== 'number' || difficulty <= 0 || difficulty > 10){
+        else if (!(difficulty > 0 || difficulty <= 10)){
             alert("difficulty must be a number between 1 and 10, inclusive");
         }
         else if (exercises.length > 10){
