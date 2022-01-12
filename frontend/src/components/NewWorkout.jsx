@@ -8,6 +8,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import { v4 as uuidv4 } from 'uuid';
 import { createNewWorkout } from '../services/workoutServices.js';
+import fire from '../fire.js';
 import '../css/workout.css';
 
 function NewWorkout() {
@@ -29,8 +30,10 @@ function NewWorkout() {
         e.preventDefault();
         if (name && description && timeInMinutes && difficulty && exercises){
             alert("workout successfully created");
+            const creatorEmail = fire.auth().currentUser.email;
+            const creatorName = fire.auth().currentUser.name;
             navigate("/workouts");
-            return createNewWorkout(name, description, timeInMinutes, difficulty, exercises);
+            return createNewWorkout(name, description, timeInMinutes, difficulty, exercises, creatorEmail, creatorName);
         }
         else{
             alert("workout not created");

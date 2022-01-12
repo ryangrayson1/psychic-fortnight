@@ -4,7 +4,7 @@ function About() {
 
     return(
         <div>
-            <h3 className="words">About page in progress</h3>
+            <h3 className="words">About page under construction. Check back later!</h3>
         </div>
     );
 };
