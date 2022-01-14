@@ -18,16 +18,21 @@ function Workouts(){
       }, []);
 
     const onSearchChange = (e) => {
-        e.preventDefault();
-        setSearchValue(e.target.value);
-        console.log(searchValue);
-        if (searchValue) {
-            setFilteredData(workoutData.filter(workout => {
-                console.log(workout.name);
-                workout.name.toLowerCase().includes(searchValue.toLowerCase());
-            }));
+        let newVal = e.target.value;
+        setSearchValue(newVal);
+        console.log(newVal);
+
+        function checkMatches(w){
+            return ( w.name.toLowerCase().includes(newVal.toLowerCase()) || w.creatorEmail.toLowerCase().includes(newVal.toLowerCase()) || w.description.toLowerCase().includes(newVal.toLowerCase()) );
+        };
+
+        if (newVal) {
+            setFilteredData(workoutData.filter(checkMatches));
         }
+
+        console.log(filteredData);
     }
+        
 
     return(
         <div>
@@ -42,7 +47,7 @@ function Workouts(){
 
             <div>
                 <label htmlFor="search" className="words">Search Workouts</label><br/>
-                <input type="text" placeholder="Search by Name..." className="searchbar" value={searchValue} onChange={onSearchChange}/>
+                <input type="text" placeholder="Enter a workout name, email, or keyword..." className="searchbar" value={searchValue} onChange={onSearchChange}/>
             </div>
 
             <div>
