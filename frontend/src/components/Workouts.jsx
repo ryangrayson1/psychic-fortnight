@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getWorkoutData } from '../services/workoutServices.js';
+import '../css/workout.css';
 
 function Workouts(){
     const [workoutData, setWorkoutData] = useState(null);
+    const [searchValue, setSearchValue] = useState();
+    const [filteredData, setFilteredData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,9 +17,22 @@ function Workouts(){
         fetchData();
       }, []);
 
-      if (workoutData){
-          console.log(workoutData);
-      }
+    const onSearchChange = (e) => {
+        let newVal = e.target.value;
+        setSearchValue(newVal);
+        console.log(newVal);
+
+        function checkMatches(w){
+            return ( w.name.toLowerCase().includes(newVal.toLowerCase()) || w.creatorEmail.toLowerCase().includes(newVal.toLowerCase()) || w.description.toLowerCase().includes(newVal.toLowerCase()) );
+        };
+
+        if (newVal) {
+            setFilteredData(workoutData.filter(checkMatches));
+        }
+
+        console.log(filteredData);
+    }
+        
 
     return(
         <div>
@@ -27,39 +43,77 @@ function Workouts(){
                     Create a Workout
                 </Link>
             </button>
-            <br/>
+            <br/><br/>
+
+            <div>
+                <label htmlFor="search" className="words">Search Workouts</label><br/>
+                <input type="text" placeholder="Enter a workout name, email, or keyword..." className="searchbar" value={searchValue} onChange={onSearchChange}/>
+            </div>
 
             <div>
                 <br/>
                 {!workoutData ? 
-                <h3 className="words">Loading workouts...</h3> : 
-                <>
-                    {workoutData.map((workout) => (
+                    <h3 className="words">Loading workouts...</h3> : 
+                    <>
 
-                        <>
-                            <div className="card workout-card bg-transparent border-primary words">
-                                <div className="card-header bg-transparent border-primary">
-                                    <b><h3>{workout.name}</h3></b>
-                                    <h6>by {workout.creatorEmail}</h6>
-                                </div>
-                                <div className="card-body bg-transparent border-primary">
-                                    <p>{workout.description}</p>
-                                    Time: {workout.timeInMinutes} min  |  Difficulty: {workout.difficulty}/10
-                                </div>
+                        {!searchValue ? 
+                            <>
+                                {workoutData.map((workout) => (
 
-                                <div className="card-footer bg-transparent border-primary">
-                                    <ul className="list-group list-group-flush bg-transparent border-success">
-                                        {workout.exercises.map((exercise) => (
-                                            <li className="list-group-item bg-transparent border-success"><div className="words">{exercise.exerciseName}: {exercise.sets} sets of {exercise.reps} reps.</div></li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <br/>
-                        </>
+                                    <>
+                                        <div className="card workout-card bg-transparent border-primary words">
+                                            <div className="card-header bg-transparent border-primary">
+                                                <b><h3>{workout.name}</h3></b>
+                                                <h6>by {workout.creatorEmail}</h6>
+                                            </div>
+                                            <div className="card-body bg-transparent border-primary">
+                                                <p>{workout.description}</p>
+                                                Time: {workout.timeInMinutes} min  |  Difficulty: {workout.difficulty}/10
+                                            </div>
 
-                    ))}
-                </>}
+                                            <div className="card-footer bg-transparent border-primary">
+                                                <ul className="list-group list-group-flush bg-transparent border-success">
+                                                    {workout.exercises.map((exercise) => (
+                                                        <li className="list-group-item bg-transparent border-success"><div className="words">{exercise.exerciseName}: {exercise.sets} sets of {exercise.reps} reps.</div></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </>
+
+                                ))}
+                            </> : 
+
+                            <>
+                                {filteredData && filteredData.map((workout) => (
+
+                                    <>
+                                        <div className="card workout-card bg-transparent border-primary words">
+                                            <div className="card-header bg-transparent border-primary">
+                                                <b><h3>{workout.name}</h3></b>
+                                                <h6>by {workout.creatorEmail}</h6>
+                                            </div>
+                                            <div className="card-body bg-transparent border-primary">
+                                                <p>{workout.description}</p>
+                                                Time: {workout.timeInMinutes} min  |  Difficulty: {workout.difficulty}/10
+                                            </div>
+
+                                            <div className="card-footer bg-transparent border-primary">
+                                                <ul className="list-group list-group-flush bg-transparent border-success">
+                                                    {workout.exercises.map((exercise) => (
+                                                        <li className="list-group-item bg-transparent border-success"><div className="words">{exercise.exerciseName}: {exercise.sets} sets of {exercise.reps} reps.</div></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </>
+                                ))}
+                            </>
+                        }   
+                    </>
+                }   
             </div>
         </div>
     );
