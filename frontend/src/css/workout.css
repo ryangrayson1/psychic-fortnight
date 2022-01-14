@@ -1,16 +1,19 @@
-input[type=text] {
+.add-exercise{
+    color: aliceblue;
+}
+
+.wn {
+    width: 77%;
     background-color: rgb(72, 221, 221);
     color: black;
-  }
+}
 
-  .add-exercise{
-    color: aliceblue;
-  }
-  
-  .wn {
-    width: 77%;
-  }
-  
-  .half{
+.half{
     width: 38.5%;
-  }
+}
+
+.searchbar{
+    background-color: rgb(72, 221, 221);
+    width: 25%;
+    color: black;
+}
