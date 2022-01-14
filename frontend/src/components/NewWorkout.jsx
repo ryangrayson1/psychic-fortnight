@@ -119,6 +119,7 @@ function NewWorkout() {
                     { exercises.map(inputField => (
                     <div key={inputField.id}>
                         <TextField
+                        className="exerciseform"
                         name="exerciseName"
                         label="Exercise Name"
                         variant="filled"
@@ -126,6 +127,7 @@ function NewWorkout() {
                         onChange={event => handleChangeInput(inputField.id, event)}
                         />
                         <TextField
+                        className="exerciseform"
                         name="sets"
                         label="Sets"
                         variant="filled"
@@ -133,6 +135,7 @@ function NewWorkout() {
                         onChange={event => handleChangeInput(inputField.id, event)}
                         />
                         <TextField
+                        className="exerciseform"
                         name="reps"
                         label="Reps"
                         variant="filled"
